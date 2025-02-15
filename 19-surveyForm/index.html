@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+<section>
+    <div>
+        <div class="head-img">
+            <img src="./img/img1.png" alt="heading-image">
+        </div>
+    </div>
+    
+    <div class="process">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+
+    <div class="form-main-container page1">
+        <h1>Personal Details:</h1>
+        <form method="get">
+            <div class="form-input names">
+                <div>
+                    <label for="fname">Firstname:</label>
+                    <input type="text" id="fname" name="fname" placeholder="Enter Your Firstname" required/>
+                </div>
+                <div>
+                    <label for="lname">Lastname:</label>
+                    <input type="text" id="lname" name="lname" placeholder="Single letters are not allowed">
+                </div>
+            </div>
+            <div class="form-input emails">
+                <div>
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" placeholder="Ex:abc@gmail.com">
+                </div>
+                <div>
+                    <label for="altEmail">Alternate Email Address:</label>
+                    <input type="email" id="altEmail" name="altEmail" placeholder="Ex:cba@gmail.com">
+                </div>
+            </div>
+            <div class="form-input country-ph">
+                <div>
+                    <label for="phno">Phone Number:</label>
+                    <input type="number" id="number" name="phno" placeholder="10-Digit Number">
+                </div>
+            </div>
+            <div class="address">
+                <label for="address">Current Address:</label></br>
+                <textarea name="address" id="address" rows="5"></textarea>
+            </div>
+            <input type="button" id="nextButton" class="nextButton" value="NEXT"/>
+        </form>
+    </div>
+
+    <div class="form-main-container page2">
+        <h1>Education Details:</h1>
+        <form>
+            <div class=" collegeName">
+                <div>
+                    <label for="collegeName">College Name:</label>
+                    <select id="collegeName">
+                        <option value="">Select College Name</option>
+                        <option value="1">DGVC college</option>
+                        <option value="2">XXX college</option>
+                        <option>YYY college</option>
+                        <option>ZZZ college</option>
+                        <option>KKK college</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-input CGPA">
+                <label for="cgpa">CGPA (%)</label>
+                <input type="number" id="cgpa">
+            </div>
+            <div class="school">
+                <label for="schoolName">School Name:</label>
+                <input type="text" id="schoolName">
+            </div>
+            <div class="form-input school-marks">
+                <label for="marks">Marks (%)</label>
+                <input type="text" id="marks">
+            </div>
+            <div class="btn">
+                <input type="button" id="previous-btn" class="previous-btn" value="Previous">
+                <input type="button" id="nextButton" class="nextButton" value="NEXT"/>
+            </div>
+        </form>
+    </div>
+    
+    <div class="form-main-container page3">
+        <h1>Internship Details:</h1>
+        <form>
+            <div class="internship-company">
+                <div>
+                    <label for="internshipCompany">Company Name:</label>
+                    <input type="text" id="internshipCompany" name="internshipCompany" placeholder="Enter Company Name" required/>
+                </div>
+            </div>
+            <div class="internship-duration">
+                <div>
+                    <label for="duration">Duration (months):</label>
+                    <input type="number" id="duration" name="duration" placeholder="Enter Duration">
+                </div>
+            </div>
+            <div class="internship-position">
+                <div>
+                    <label for="position">Position:</label>
+                    <input type="text" id="position" name="position" placeholder="Enter Position">
+                </div>
+            </div>
+            <div class="btn">
+                <input type="button" id="previous-btn" class="previous-btn" value="Previous">
+                <input type="button" id="nextButton" class="nextButton" class="nextButton" value="NEXT"/>
+            </div>
+        </form>
+    </div>
+    
+    <div class="form-main-container page4">
+        <h1>Additional Information:</h1>
+        <form>
+            <div class=" additional-info">
+                <label for="skills">Skills:</label></br>
+                <textarea name="skills" id="skills" rows="5" placeholder="List your skills"></textarea>
+            </div>
+            <div class=" additional-info">
+                <label for="achievements">Achievements:</label></br>
+                <textarea name="achievements" id="achievements" rows="5" placeholder="List your achievements"></textarea>
+            </div>
+            <div class="btn">
+                <input type="button" id="previous-btn" class="previous-btn" value="Previous">
+                <input type="submit" value="Submit" id="submit" class="submit"/>
+            </div>
+        </form>
+    </div>
+
+
+    <div id="sucess-container">
+<div class="sucess-message">
+    <img src="./img/checked.png">
+    <h1>Completed</h1>
+    <p>Wait and Track your Profile for Internship <a href="#">Know more</a></p>
+    <button class="home-btn" id="home-btn">Go to Home page</button>
+</div>
+
+    </div>
+
+</section>
+<script src="./script.js"></script>
+</body>
+</html>

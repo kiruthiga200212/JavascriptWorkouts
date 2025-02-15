@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+    <style>
+        body{
+            background:rgba(206, 197, 80, 0.253);
+            font-family:Arial, Helvetica, sans-serif;
+            height: 80vh;
+            background-repeat: no-repeat;
+            background-blend-mode: overlay;
+            
+        }
+        p{
+            text-align: center;
+        }
+        a{
+            text-underline-offset: 0.3em;
+            padding-inline: 5px;
+        }
+        #form{
+            width:350px;
+            margin: 20vh auto 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        #form h1{
+            color: #0f2027;
+            text-align: center;
+            text-transform: capitalize;
+        }
+        
+        #form button{
+            padding:10px;
+            margin-top: 10px;
+            width: 100%;
+            color: white;
+            background-color: #0f2027;
+            border: none;
+            border-radius: 5px;
+            text-transform: uppercase;
+            word-spacing: 0.3em;
+            letter-spacing: 0.2em;
+        }
+        .input-control{
+            display: flex;
+            flex-direction: column;
+        }
+        .input-control input{
+            border:2px solid #ddd;
+            border-radius: 5px;
+            display: block;
+            font-size: 1rem;
+            padding: 10px;
+            margin-top: 3px;
+           
+        }
+        .input-control input:focus{
+            outline: none;
+        }
+        .input-control.sucess input{
+            border-color: #09c372;
+}
+
+        .input-control.error input{
+            border-color: #ff3860;
+
+        }
+        label{
+            margin-block: 2px;
+        }
+
+        .input-control .error{
+            color: #ff3860;
+            font-size:0.9rem;
+            height: 13px;
+        }
+        img{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            
+        }
+      .input-control{
+            position: relative;
+            
+        }
+        .show-hide {
+            position: absolute;
+            right:0;
+            top:30%;
+            padding:10px;
+            transform: translate(-50% -50%);
+        }
+        .error{
+            margin-block: 10px;
+        }
+        .lamp{
+            width:450px;
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+
+
+
+    </style>
+    <img class = "lamp"src="/7.HomeDec/imgs/lamp.png">
+    <div class="container">
+        <form action="/" id="form">
+            <h1>Create New Account</h1>
+            <div class="input-control">
+                <label for="username">Username</label>
+                <input id ="username" name="username" type ="text" required>
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="email">Email</label>
+                <input id ="email" name="username" type ="email" required>
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="password">New Password</label>
+                <input id ="password" name="password" type ="text" required>
+                <span class="show-hide"><i class="bi bi-eye"></i></span>
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="password2">Confrim Password</label>
+                <input id ="password2" name="password2" type ="password" required>
+                <span class="show-hide"><i class="bi bi-eye-slash"></i></span>
+                <div class="error"></div>
+            </div>
+            <button type="submit" onclick="validateInputs()">Ready to Explore</button>
+            <p>Already have an account <a href="#">Sign Up</a></p>
+        </form>
+        <img src="./palnt.png"/>
+    </div>
+
+
+    <script>
+        const form = document.getElementById("form")
+        const userName = document.getElementById("username")
+        const email = document.getElementById("email")
+        const password = document.getElementById("password")
+        const confirmPassword = document.getElementById("password2")
+
+
+        const validate=((email)=>{
+            let re =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            return re.test(String(email).toLowerCase())
+            
+
+        })
+        form.addEventListener( 'submit',e =>{
+            e.preventDefault();
+            validateInputs();
+        });
+
+        const setError = (element, message)=>{
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector(".error");
+
+            errorDisplay.innerText = message;
+            inputControl.classList.add("error");
+            inputControl.classList.remove("sucess")
+        }
+
+        const setSuccess =( element) =>{
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector(".error")
+            
+            errorDisplay.innerText = " ";
+            inputControl.classList.add("sucess")
+            inputControl.classList.remove("error")
+        
+        }
+
+        const validateInputs =() =>{
+            const usernameValue = userName.value.trim();
+            const emailValue = email.value.trim();
+            const passwordValue = password.value.trim();
+            const password2value = password2.value.trim();
+
+            if(usernameValue === ""){
+                setError(userName,"Username is required")
+            }
+            else{
+                setSuccess(username);
+            }
+            if(emailValue === ''){
+                setError(email,"email is required")
+            }else if (!validate(emailValue)){
+                setError(email,"email is required")
+            }
+            else{
+                setSuccess(email);
+            }
+
+            if(passwordValue == ""){
+                setError(password,"password is required");
+            }else if(passwordValue.length < 8){
+                setError(password,"password must to be at least 8 a character")
+            }
+            else{
+                setSuccess(password);
+                }
+
+            if(password2value === ""){
+                setError(password2, "please confirm your password ")
+
+            }
+            else if(password2value !== passwordValue){
+                setError(password2,"password doesn't match please enter correct password")
+            }else{
+                setSuccess(password2)
+            }
+
+        }
+
+        const eyeIcons = document.querySelectorAll("span");
+
+        eyeIcons.forEach((eyeIcon) =>{
+            eyeIcon.addEventListener("click",()=>{
+                const passwordIn = eyeIcon.parentElement.querySelector("input");
+                if(passwordIn.type === "password"){
+                    eyeIcon.classList.replace(`<i class="bi bi-eye"></i>`,`<i class="bi bi-eye-slash"></i>`)
+                    return(passwordIn.type = "text")
+                }
+                else{
+                    eyeIcon.classList.replace(`<i class="bi bi-eye-slash"></i>`, `<i class="bi bi-eye-slash"></i>`);
+                    passwordIn.type ="password"
+                }
+            })
+
+        })
+
+
+        let sumbitForm=(()=>{
+            e.preventDefault();
+            validateInputs();
+            
+        })
+    </script>
+</body>
+</html>

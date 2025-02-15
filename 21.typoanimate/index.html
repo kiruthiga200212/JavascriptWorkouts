@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @font-face {
+        font-family: harmond;
+        src: url("./img/Harmond-SemiBoldCondensed.otf");
+    }
+    .main-container{
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        font-family: harmond;
+    }
+    .container{
+        display: flex;
+        align-items: center;
+      
+        flex-direction: column;
+        transition:  .4s ease-in-out;
+        padding: 20px;
+        border-left: 1px solid black;
+       width: 250px;
+        flex-wrap: wrap;
+        height: 70vh;
+    }
+    img{
+        width: 0;
+        transition: all .4s ease-in;
+        border-radius: 15px;
+    }
+    .container:hover img{
+        display: block;
+        transition: all .4s ease-in;
+        width: 100%;
+    }
+    .container:hover{
+        width: 650px;
+        flex-wrap: nowrap;
+    }
+    h1{
+        font-size:3rem;
+    }
+</style>
+<body>
+    <div class="main-container">
+    <div class="container">
+        <div><h1>1</h1><h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, tempora.</h2></div>
+        <div><img src="./img/img1.png" alt=""></div>
+    </div>
+    <div class="container">
+        <div><h1>2</h1><h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, tempora.</h2></div>
+        <div><img src="./img/img2.png"  alt=""></div>
+    </div>
+    <div class="container">
+        <div><h1>3</h1><h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, tempora.</h2></div>
+        <div><img src="./img/img3.png" alt=""></div>
+    </div>
+    <div class="container">
+        <div><h1>4</h1><h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, tempora.</h2></div>
+        <div><img src="./img/img4.png" alt=""></div>
+    </div>
+    <div class="container"></div>
+</div>
+</body>
+</html>

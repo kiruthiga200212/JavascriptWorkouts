@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form Using Regular Expression</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+          
+        }
+        .main-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 450px;
+            height: 75vh;
+            padding: 12px;
+            margin: 0 auto;
+        }
+        h1{
+            margin-bottom: 25px;
+        }
+        
+        input {
+            border-radius: 7px;
+        }
+        
+        input[type="email"],
+        input[type="password"] {
+            width: 450px;
+            margin-block: 15px;
+            padding: 15px;
+            border: none;
+            background-color: rgba(128, 128, 128, 0.137);
+            outline: none;
+            box-sizing: border-box;
+        }
+        
+        input[type="button"] {
+            margin-top: 25px;
+            padding: 15px;
+            width: 100%;
+            background-color: black;
+            color: white;
+        }
+        .email{
+            background-color: rgba(250, 117, 117, 0.466);
+            border:1px solid rgba(255, 125, 125, 0.808);
+        }
+        .password{
+            background-color: rgba(250, 117, 117, 0.466);
+            border:1px solid rgba(255, 125, 125, 0.808);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div>
+            <h1>Form Using Regular Expression</h1>
+        </div>
+        <form id="form">
+            <label for="email"></label>
+            <input type="email" class="email" id="email" placeholder="Email" required>
+            <p id="email-error"></p>
+            <label for="password"></label>
+            <input type="password" class= "password" id="password" placeholder="Password" required>
+            <p id="password-error"></p>
+            <input type="button" value="Submit" onclick="validateForm()">
+        </form>
+    </div>
+    <script>
+  const emailExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const passExp = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+
+
+
+// email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.]+\.[a-zA-Z]{2,}$/;
+//password: /^([?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/
+
+function validateForm() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var emailError = document.getElementById("email-error");
+    var passwordError = document.getElementById("password-error");
+
+    emailError.innerHTML = "";
+    passwordError.innerHTML = "";
+    
+    let valid = true;
+
+    if (!email) {
+        emailError.style.color = "#f77020";
+        emailError.innerHTML = "Email field cannot be blank!";
+        
+        valid = false;
+    } else if (!emailExp.test(email)) {
+        emailError.style.color = "#f77020";
+        emailError.innerHTML = 'This is not a valid email "ex : abc@gmail.com"';
+        valid = false;
+    }
+
+    if (!password) {
+        passwordError.style.color = "#f77020";
+        passwordError.innerHTML = "Password field cannot be blank!";
+        
+        valid = false;
+
+    } else if (!passExp.test(password)) {
+        passwordError.style.color = "#f77020";
+        passwordError.innerHTML = `This is not a valid password. 
+        <br>Password must be 8 characters long, contain at least one uppercase letter, and one digit.`;
+        valid = false;
+    }
+
+    if (valid) {
+        alert("Form submitted successfully");
+    } else {
+        alert("Please enter valid inputs");
+    }
+}
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .conic{
+             
+    width: 680px;
+    height: 680px;
+    border-radius: 50%;
+    opacity: 1;
+    background-image: url(https://grainy-gradients.vercel.app/noise.svg), conic-gradient( #803b61, black,black,#803b61);
+    transform: rotate(66deg);
+    transition: all .4s ease-in-out;
+
+   
+        }
+        .conic:hover{
+            transform: rotate(220deg);
+        }
+    </style>
+
+    <div class="conic">
+
+    </div>
+</body>
+</html>

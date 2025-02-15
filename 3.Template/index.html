@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="content">
+    <h1>LIKE MORE COLLECTION</h1>
+    <h3>Let's started</h3>
+    <button type="button">Explore Now</button>
+</div>
+<div class="bottom__content">
+    <h3>Designing Better Experience </h3>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto, fuga eaque dolores autem nesciunt quisquam fugit ea quidem, sint a sed quis quam pariatur est iste. Ducimus architecto dolores soluta.</p>
+</div>
+<div class="gap"></div>
+<div class="font" >
+    <h1>Geometric Typography</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex aperiam odit, eius quae voluptatum suscipit repudiandae, officia laudantium nisi, harum perferendis eum. Enim animi perferendis, alias ullam vero esse odit.</p>
+
+    <img src="rocket.png">
+
+</div>
+<div class="circle__content">
+    <img src="https://img.freepik.com/free-vector/hand-drawn-world-graphics-day-illustration_52683-58126.jpg">
+    
+</div>
+</div>
+<div class="triangle">   </div>
+
+
+<div id="wrap"></div>
+  <input type="text" oninput="drawCircle(event)">
+
+
+    <script>
+function drawCircle(event){
+
+document.getElementById("wrap").innerHTML = "";
+
+var text = "Radians & Circle & Math & Trigonometry & ";
+if(event){
+if(event.target.value !=""){
+text = event.target.value;
+}
+}
+var word = text.split('');
+
+var quantity = word.length;
+
+var radius = 150;
+
+var padding = 300;
+
+var radians = 3.14; // Max radians value (full circle)
+
+var angle = 360/(2*Math.PI); //angle to radian relation
+
+var point = Math.PI/quantity;
+
+var step = (2*Math.PI)/quantity;
+
+
+for(var i = 0, j = 0; i<radians; i+=point, j++){
+
+var cat_oppos =  Math.sin(step*j) * radius;
+var cat_attach = Math.cos(step*j) * radius;
+
+var elm = document.createElement('div');
+elm.innerHTML = word[j];
+elm.classList.add("dot");
+
+elm.style.top = padding + cat_oppos + 'px';
+elm.style.left = padding + cat_attach + 'px';
+elm.style.transform = 'rotate('+((angle*(step*j))+90)+'deg)';
+
+document.getElementById("wrap").appendChild(elm);
+}
+
+
+var elm = document.createElement('div');
+elm.innerHTML = "|";
+elm.classList.add("dot");
+
+elm.style.top = padding  + 'px';
+elm.style.left = padding  + 'px';
+
+
+document.getElementById("wrap").appendChild(elm);
+
+
+}
+
+drawCircle();
+    </script>
+</body>
+</html>

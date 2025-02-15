@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" integrity="sha512-HXXR0l2yMwHDrDyxJbrMD9eLvPe3z3qL3PPeozNTsiHJEENxx8DH2CxmV05iwG0dwoz5n4gQZQyYLUNt1Wdgfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<style>
+ body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+ }
+ .container{
+    background-color: transparent;
+    border: 1px solid grey;
+    border-radius:12px;
+    display: none;
+ }
+ h1{
+    text-align: center;
+
+ }
+.container ul{
+    display: grid;
+    grid-template-columns: repeat(9,1fr);
+    padding: 0;
+
+} 
+
+.container ul li:nth-child(37),li:nth-child(38){
+    grid-row:  span 2; 
+    background-color: grey;
+}
+
+ li{
+    list-style-type: none;
+    width:30px;
+    height:30px;
+    border:1px solid grey;
+    border-radius: 8px;
+    margin: 10px;
+ }
+ .main__categories button{
+    padding:15px;
+    width:150px;
+    background:linear-gradient(40deg,rgb(70, 70, 230),rgb(146, 34, 238));
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 5px;
+    
+}
+.movies__content button{
+    padding:10px;   
+    width:150px;
+    background:linear-gradient(-30deg,rgb(8, 23, 104),rgb(34, 48, 238));
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 2px;
+}
+
+#display{
+  
+    background-color: rgba(0, 0, 0, 0.699);
+    width:100%;
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top:0;
+    left:0;
+    backdrop-filter:blur(15px);
+    display: none;
+}
+.display__container{
+background-color: white;
+padding: 10px;
+width:650px;
+display: flex;
+align-content: center;
+flex-direction: column;
+position: relative;
+
+}
+
+.seat__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    
+}
+#seat{
+    width: 65px;
+    height: 25px;
+    background:linear-gradient(40deg,rgb(71, 161, 245),rgb(123, 198, 221));
+  
+    border-radius: 5px;
+
+}
+#seatCount{
+    margin-inline: 12px;
+    width: 12px;
+    height: 12px;
+    background-color: rgb(255, 210, 9);
+    border: none;
+    border-bottom: 2px solid rgb(126, 126, 126);
+    padding: 10px;
+
+}
+
+.display__container button{
+padding:10px;
+margin: 5px;
+border:none;
+}
+.display__container button:nth-of-type(1){
+    background-color: rgb(89, 160, 241);
+  
+
+}
+.display__container button:nth-of-type(2){
+    background:linear-gradient( 60deg,rgb(14, 41, 71),rgb(89, 160, 241),rgb(10, 75, 128));
+  
+
+}
+.display__container button:nth-of-type(3){
+    background:linear-gradient( 60deg,rgb(14, 41, 71),rgb(89, 104, 241),rgb(51, 42, 131));
+    color: white;
+
+}
+.display__container button:nth-of-type(3) i{
+    color:rgb(255, 217, 0);
+    font-size:1rem;
+    vertical-align: text-top;
+}
+.close{    
+    position: absolute;
+    right:0;
+    background-color: #f1f0f0;
+    border: none;
+    border-radius: 25px;
+    
+}
+li:nth-child(10){
+
+ background-color: blue;
+}
+li:nth-child(11){
+
+background-color: blue;
+}
+li:nth-child(12){
+
+background-color: blue;
+}
+
+.close:hover{
+    background-color: #ddd;
+}
+.submit{
+    background-color: gold;
+    color:black;
+    font-weight: 600;
+}
+.image__container{
+    position: relative;
+ 
+
+}
+.image__conent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+   
+
+}
+.image__items{
+    height: 30vh;
+    margin: 10px;
+  
+
+}
+.image__items img{
+    
+    width:100%;
+    height: 100%;
+    
+
+}
+.para{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 650px;
+    height: 40vh;
+    position: absolute;
+    left:20%;
+    
+
+}
+#paraDetails{
+    display: none;
+    align-items: space-around;
+    justify-content: space-around;
+    
+ 
+  
+}
+.para button{
+   
+    background-color: rgba(223, 22, 22, 0.74);
+    padding-inline: 10px;
+    margin-inline:15px;
+    width: 485px;
+    height:50px;
+    
+}
+
+</style>
+
+    <h1>Document Object Model </h1>
+    <h2>Booking a ticket </h2>
+<div class="main-container">
+
+    <div id="mainCategories" class="main__categories">
+<button id = "mc" onclick = "Choose()" type="button">Movies</button>
+<button id="tvSeries"  onclick = "tvSeries()" type="button">Tv Series</button>
+<button class="mc" type="button">Drama</button>
+<button class="mc" type="button">Action Flim</button>
+<button class="mc" type="button">Mystery</button>
+<button class="mc" type="button">Fantasy</button>
+
+
+    </div>
+    <div id = "movies" class="movies__content">
+    <ul id ="moviesName">
+<button id = "categories" class = "categories" onclick= "Select()" type="button">Lorem</button>
+<button class = "categories">Ipsum</button>
+<button class = "categories">Lorem</button>
+<button class = "categories">Ipsum</button>
+<button class = "categories">lorem</button>
+
+
+    </ul>
+</div>
+</div>
+
+    <div class="container" id ="container">
+        <ul id ="list">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+  
+
+
+        </ul>
+    </div>
+
+
+<div class="image__container">
+    <div class="image__conent">
+        <div class="image__items">
+    <img onclick="Details()" src = "https://www.idfcfirstbank.com/content/dam/idfcfirstbank/images/blog/credit-card/best-credit-cards-to-save-on-movie-tickets-717X404.jpg">
+    <div class ="para">
+    <p id = "paraDetails">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque in blanditiis, vero quod fugit, assumenda quos qui cum, doloribus enim amet eaque aut error? Cumque, officiis! Eaque itaque esse aut eum voluptatem odit quia officia? Placeat, obcaecati! Eius, architecto quaerat.<button type="Book ">Book Now</button></p></div>
+    </div>
+    <div class="image__items">
+    <img src = "https://assets.indiadesire.com/images/insider%20movie%20ticket%20booking%20offer.jpg">
+    </div>
+    <div class="image__items">
+    <img src = "https://cdn.grabon.in/gograbon/images/web-images/uploads/1618571888087/movie-ticket-offers.jpg">
+    </div>
+    <div class="image__items">
+    <img src = "https://originserver-static1-uat.pvrcinemas.com/pvrcms/movie_v/13306_ImEJ3fKM.jpg">
+    </div>
+</div>
+</div>
+
+    <div id="display">
+<div class="display__container">
+<h1>Ticket counted !</h1>
+<p>Choose Your tickets</p>
+<button type="button">Classic</button>
+<button type="button">Premium</button>
+<button type="button">Luxury <i class="ri-bard-fill"></i></button>
+<h3>How many seat?</h3>
+<div class="seat__container">
+    <p>Click and Select:</p>
+<div ><button type ="button" id ="seat" onclick="Click()"></button></div>
+<div id="seatCount"></div></div>
+<h3 id="show"></h3>
+
+<button class = "close" onclick="Close()" type="button">X Close</button>
+<button class = "submit" onclick="Close()" type="button">Sumbit</button>
+</div>
+
+
+    </div>
+<script>
+      const button = document.getElementById("mc");
+      const tv = document.getElementsByClassName("tvSeries");
+    button.addEventListener("click", Choose); 
+
+    function Choose() {
+        const cat = document.querySelectorAll(".categories");
+        const mc =  document.getElementById("mc");
+        document.getElementById("mc").style.background = "#9B7EBD";
+      
+
+        for ( i = 0; i < cat.length; i++) {
+            cat[i].style.background = "#9B7EBD";
+            cat[i].style.color ="black";
+            console.log(cat.innertext);
+ console.log("button clicked");
+
+        }
+        
+       
+    }
+    function tvSeries() {
+        const cat = document.querySelectorAll(".categories");
+        document.getElementById("tvSeries").style.background = "#37AFE1";
+        for ( i = 0; i < cat.length; i++) {
+            cat[i].style.background = "#37AFE1";
+            cat[i].style.color ="black";
+            console.log(cat.innertext);
+ console.log("button clicked");
+
+        }
+       
+    }
+    let colors = ["red","blue"];
+    const li = document.querySelectorAll("#list li");
+    li.forEach(li => {
+        li.addEventListener('click', function() {
+var math;
+    var randomColor = colors (math.random()*colors.length);
+    let list = document.getElementsByTagName("li");
+    list.style.background = randomColor;
+});
+    });
+
+
+
+
+    
+    
+    function Select(){
+        document.getElementById("display").style.display = "block";
+        
+        document.getElementById("display").style.display ="block";
+    }
+
+  
+function Close(){
+    document.getElementById("display").style.display="none";
+    alert("Close this window");
+    document.getElementById("container").style.display = "block";
+
+}
+
+function Click(){
+    let count = 0;
+        let btn = document.getElementById("seat");
+        let disp = document.getElementById("seatCount");
+         
+        btn.onclick = function () {
+                    count++;
+        disp.innerHTML = count;
+        document.getElementById("show").innerHTML=(" You have Selected " +count +" Seats ");
+        document.getElementById("show").style.textAlign = "center";
+        document.querySelectorAll("li").style.background = "blue"+ count;
+        }
+}
+
+
+function Details(){
+    document.getElementById("paraDetails").style.display = "flex";}
+    function Details() {
+       document.getElementById("paraDetails").style.display = "flex";
+   }
+
+
+    
+ 
+
+</script>
+
+
+</body>
+</html>
