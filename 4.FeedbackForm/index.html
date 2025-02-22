@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feeback Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <button type ="button" id ="home"><a href = "#">Home</a></button>
+    <button type="button" id ="reset">Reset</button>
+</header>
+    <div class="container">
+        <div class="container__content">
+            <h1>Feedback Form</h1>
+            <h3>Hello, Thank you for submitted your Feeback</h3>
+
+        </div>
+
+
+        <div class="form__container">
+            <form name="feedback" method="get" action="">
+                <label for ="userName"></label>
+                <input type="text" name ="fullname"id="UserName" placeholder="Enter your Name"/>
+                <label for ="email"> </label>
+                <input name= "email"type="email" id="email" placeholder="keerthi@gmail.com"/>
+                
+                <div id ="radio">
+                    <input type="radio" id="general" name="feedback" value="General Feedback">
+                    <label for="general">General Feeback</label>
+                    <input type="radio" id="technical" name="feedback" value="Technical Support">
+                    <label for="technical">Technical Support</label>
+                    <input type="radio" id="contri" name="feedback" value="Contribution">
+                    <label for="contri">Contribution</label>
+                </div>
+
+                <label for ="message"></label>
+                <textarea id ="message" name ="message" rows="4" cols="50" placeholder="Enter your Feedback"></textarea>
+                <div class="checkbox">
+                <input type = "checkbox" name="terms"/>
+                <label for="accept">I accept terms and condition</label>
+            </div>
+<button type ="button" id ="submit">Submit</button>
+
+            </form>
+           
+        </div>
+        <div id="back"><a href="#">Back</a></div>
+    </div>
+
+    <div id="display">
+      
+    </div>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

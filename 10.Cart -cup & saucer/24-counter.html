@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            height:100vh;
+            text-transform: capitalize;
+         
+        }
+        section{
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            height:100vh;
+            flex-direction: column;
+         margin-inline: 15px;
+        }
+        .container{
+            align-items: center;
+            display: flex;
+            justify-content: space-around;
+            border: 1px solid #ddd;
+            padding:10px;
+            text-transform: capitalize;
+            margin-block:12px;
+           
+            
+            
+        }
+        .container:hover{
+            box-shadow: 0 0 4px grey;
+            transition: all .4s ease-in;
+
+        }
+p{
+    width: 100%;
+    font-size:0.95rem;
+    font-weight:500;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+
+}
+        button{
+            padding:10px;
+            background-color: rgba(243, 191, 48, 0.726);
+            border:none;
+            border-radius: 5px;
+            margin-inline: 12px;
+            width: 100%;
+            text-transform: capitalize;
+
+        }
+        #value {
+            background-color: rgba(231, 231, 231, 0.637);
+            width: 250px;
+            height: 38px;
+            border-radius: 5px;
+
+        }
+        #reset {
+            background-color:rgba(93, 173, 148, 0.733);
+        }
+
+        .container div:nth-child(2) {
+            display: flex;
+            align-items: center;
+        justify-content: center;
+        
+        
+        }
+        
+        .container div:nth-child(1) {
+            display: flex;
+            align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+    
+        }
+        .container div:nth-child(1) p,img,button{
+            padding-block: 12px;
+        }
+
+        .container div:nth-child(1) button:hover{
+            background-color: rgb(60, 172, 206);
+        }
+
+        img{
+            width:200px;
+        }
+
+        #cart__container div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            position: relative;
+            
+        }
+        #cart{
+            display: none;
+        }
+
+        #cart img, button,p {
+            padding-inline: 10px;
+        }
+        #cart img{
+            width: 100px;
+        }
+
+        #remove {
+            background-color: transparent;
+            color: #6d6d6d;
+        }
+        #remove:hover{
+            background-color: #ddd;
+        }
+        #cart .value{
+            background-color: rgba(243, 191, 48, 0.637);
+            border: none;
+            width:35px;
+            height: 35px;
+            border-radius: 50%;
+            position: absolute;
+            top:0;
+            right: 0;
+            transform: translate(20px) translateY(-15px);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+
+
+ <section>
+    <h1>Tea cups collection</h1>
+ 
+    <div class="container">
+       <div >
+        <p>Black cup and saucer sets.</p>
+        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTA_tlOipt4DhzJoqpQNEIJSPfBdCM7_Wguli44X5-SslVY1GigUwsq51kImTOaCvSlsKXSorCrBqgPTfMajVEZIHDQ9x8qO5CURvr9_h1ruRPhCwf-fX3TAA">
+        <button  id = "add" onclick= "Cart()" type="button">Add to cart</button>
+    </div>
+    <div id = "counter">
+        <button id = "increment" type="increment">+</button>
+        <div id ="value"></div>
+        <button id = "decrement" type="button">-</button>
+    </div>
+        <button  onclick ="reset()"id ="reset" type="button">reset</button>
+        
+
+    </div>
+    <div class="container">
+        <div >
+         <p>Transparent tea Glasses</p>
+         <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQwcrmMEO9okdrU9oacNVkcsoXDtuUhIE9y3ToXcJjxyJ3dfqIcSnquWGmdSBomXu1pwcV71V7yoKTMlmRB3tFmSVULUXRD8fi8x7fRZre4gfiDzag21MYrJg&usqp=CAE">
+         <button  id = "add" onclick= "Cart()" type="button">Add to cart</button>
+     </div>
+     <div id = "counter">
+         <button id = "increment" type="increment">+</button>
+         <div id ="value"></div>
+         <button id = "decrement" type="button">-</button>
+     </div>
+         <button  onclick ="reset()"id ="reset" type="button">reset</button>
+         
+
+     </div>
+     <h1># Best seller</h1>
+     <div class="container">
+        <div >
+         <p>Handpainted Cup Saucer</p>
+         <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRql02gDe2JiOzz7wx2WNXCcRdfNjEFDNU137lFHy6hwnZ3k5PpDL_j6pC1tGXpWUiIC5P9JGT2AdJYuIszLmHeXqTAQc8rdgIWNHWols31B_ooC63efLzijw&usqp=CAE">
+         <button type="button">Add to cart</button>
+     </div>
+    
+     <div id = "counter">
+         <button id = "increment" type="increment">+</button>
+         <div id ="value"></div>
+         <button id = "decrement" type="button">-</button>
+     </div>
+         <button  onclick ="reset()"id ="reset" type="button">reset</button>
+         
+ 
+     </div>
+     
+     <div class="container">
+        <div >
+         <p>Black cup and saucer sets.</p>
+         <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTA_tlOipt4DhzJoqpQNEIJSPfBdCM7_Wguli44X5-SslVY1GigUwsq51kImTOaCvSlsKXSorCrBqgPTfMajVEZIHDQ9x8qO5CURvr9_h1ruRPhCwf-fX3TAA">
+         <button  id = "add" onclick= "Cart()" type="button">Add to cart</button>
+     </div>
+     <div id = "counter">
+         <button id = "increment" type="increment">+</button>
+         <div id ="value"></div>
+         <button id = "decrement" type="button">-</button>
+     </div>
+         <button  onclick ="reset()"id ="reset" type="button">reset</button>
+         
+ 
+     </div>
+     <div class="container">
+         <div >
+          <p>Transparent tea Glasses</p>
+          <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQwcrmMEO9okdrU9oacNVkcsoXDtuUhIE9y3ToXcJjxyJ3dfqIcSnquWGmdSBomXu1pwcV71V7yoKTMlmRB3tFmSVULUXRD8fi8x7fRZre4gfiDzag21MYrJg&usqp=CAE">
+          <button  id = "add" onclick= "Cart()" type="button">Add to cart</button>
+      </div>
+      <div id = "counter">
+          <button id = "increment" type="increment">+</button>
+          <div id ="value"></div>
+          <button id = "decrement" type="button">-</button>
+      </div>
+          <button  onclick ="reset()"id ="reset" type="button">reset</button>
+          
+  
+      </div>
+      
+      <div class="container">
+         <div >
+          <p>Handpainted Cup Saucer</p>
+          <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRql02gDe2JiOzz7wx2WNXCcRdfNjEFDNU137lFHy6hwnZ3k5PpDL_j6pC1tGXpWUiIC5P9JGT2AdJYuIszLmHeXqTAQc8rdgIWNHWols31B_ooC63efLzijw&usqp=CAE">
+          <button type="button">Add to cart</button>
+      </div>
+     
+      <div id = "counter">
+          <button id = "increment" type="increment">+</button>
+          <div id ="value"></div>
+          <button id = "decrement" type="button">-</button>
+      </div>
+          <button  onclick ="reset()"id ="reset" type="button">reset</button>
+          
+  
+      </div>
+    </section>
+    <section>
+        <div id="cart">
+            <div id = "cart__container">
+                <h1>Added Cart</h1>
+            <div>
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTA_tlOipt4DhzJoqpQNEIJSPfBdCM7_Wguli44X5-SslVY1GigUwsq51kImTOaCvSlsKXSorCrBqgPTfMajVEZIHDQ9x8qO5CURvr9_h1ruRPhCwf-fX3TAA">
+            <p>Black cup and saucer sets.</p>
+            <div class="value" id="show"></div>
+            <button  onclick="Remove()" id ="remove"type="button"> X Remove</button>
+            </div>
+        </div>
+        </div>
+    </section>
+<script >
+ let counter = 0;
+
+const counterValue = document.getElementById('value');
+const incrementBtn = document.getElementById('increment');
+const decrementBtn = document.getElementById('decrement');
+const resetBtn = document.getElementById('reset');
+const addCart = document.getElementById('add');
+const cartValue = document.getElementById("show");
+incrementBtn.addEventListener('click', () =>{
+    counter++;
+    counterValue.innerHTML = counter;
+    cartValue.innerHTML = counter;
+    alert("Added 1 product sucessfully!");
+   
+});
+decrementBtn.addEventListener('click', ()=>{
+    if (counter > 1){
+    counter--;  
+}
+cartValue.innerHTML = counter;
+    counterValue.innerHTML = counter;
+
+});
+resetBtn.addEventListener('click',reset);
+
+function reset(){
+    counter = 0 ;
+    counterValue.innerHTML = counter;
+    alert("Removed all products from Cart");
+}
+function Cart(){
+document.getElementById('cart').style.display="block";
+}
+
+function Remove(){
+    document.getElementById('cart').style.display ="none";
+}
+
+
+document.getElementById("value").innerHTML = counter;
+document.getElementById("show").innerHTML = counter;
+
+</script>
+
+</body>
+</html>

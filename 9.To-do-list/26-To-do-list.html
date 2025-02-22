@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<style>
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+       flex-direction: column;
+        width:100%;
+    
+    }
+    form{
+        position: relative;
+        width: 100%;
+    }
+    form input{
+        padding: 10px;
+        position:relative;
+        width:450px;
+        overflow: hidden;
+        border-radius: 15px;
+        outline: none;
+        border: 1px solid grey;
+        
+    }
+
+    
+
+    form button{
+        position: absolute;
+        right: 0;
+        padding:11px;
+        padding-inline: 22px;
+        top:0;
+        background-color: rgb(70, 70, 235);
+        color: white;
+        border:none;
+        border-radius: 15px;
+    }
+
+     form button:hover{
+        background-color: rgb(50, 50, 245);
+      
+    }
+
+    .container__content{
+ 
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-around;
+        flex-direction: column;
+        margin-block:10px;
+    
+    }
+
+    .container__items li{
+        text-align: left;
+        width:457px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-direction: row;
+        padding:10px;
+        margin: 5px;
+        border: 1px solid rgb(82, 65, 235);
+        font-size: 1.2rem;
+        font-weight: 500;
+        border-radius: 12px;
+       
+        
+    }
+    .container__items li:hover{
+        background-color: rgb(82, 65, 235);
+        color:white;
+
+    }
+    .container__items li:hover button{
+        color:white;
+    }
+    ul {
+        padding-inline: 0;
+        
+    }
+    ul div{
+        margin-block:15px;
+        background-color: #5477eb1f;
+        border-radius: 15px;
+        overflow: hidden;
+
+    }
+    ul div p{
+        background-color: blue;
+        padding:0;
+        margin:0;
+        color:white;
+        font-family: monospace;
+        padding-inline: 10px;
+    }
+    #close{
+        float:right;
+        border:none;
+        width:25px;
+        height: 25px;
+        border-radius: 50%;
+        transform: translate(-15px) translateY(-10px);
+        background-color: rgba(255, 195, 195, 0.973);
+        color:rgb(138, 138, 138);
+    }
+    li button{
+        border: none;
+        background-color: transparent;
+        color:#a7a7a7;
+        font-weight: 600;
+    }
+ #close:hover{
+        color:red;
+    }
+    #setItem{
+        margin-block:10px;
+        background-color: #5477eb1f;
+        border-radius: 15px;
+        overflow: hidden;
+       
+    }
+    #setItem ul{
+        padding:0;
+        margin:0;
+    }
+    #setItem p{
+        background-color: blue;
+        padding:0;
+        margin:0;
+        color:white;
+        font-family: monospace;
+        padding-inline: 10px;
+    }
+    #recentList {
+        margin-block:10px;
+        background-color: #f1c5ffa1;
+        border-radius: 15px;
+        overflow: hidden;
+        display: none;
+        width:490px;
+
+    }
+    #recentList ul{
+        padding:0;
+        margin:0;
+    }
+    #recentList p{
+        background-color: rgb(143, 59, 252);
+        padding:0;
+        margin:0;
+        padding-inline: 10px;
+        color:white;
+    }
+
+    button:nth-of-type(2){
+        display: none;
+    }
+
+</style>
+
+    <div class="container">
+    <div class="container__input">
+    <h2>Add Your To-Do-List</h2>
+    <form action="" method="post">
+        <input  id ="input"type="text">
+        <button id ="add" onclick = "newAdd()" type="button">Add</button>
+    </form>
+</div>
+
+<div class="container__items">
+    <div class="container__content">
+        <div id="setList">
+        <ul id ="list">
+            <button type="button" id = "close"  onclick="Close()">X</button>
+            <div>
+                <p>Daily Routine</p>
+        <li id ="listItem">Workout <button onclick="Off()"  type="button">X</button></li>
+        <li id ="listItem">Reading<button onclick="Off()" type="button">X</button></li>
+        <li id ="listItem">Pay bills <button onclick="Off()"  type="button">X</button></li>
+    </ul>
+    </div>
+</div>
+    <button type="button" id = "close"  onclick="Close()">X</button>
+    <div id ="setItem">
+        <ul>
+           
+            <p>Outing plans</p>
+        <li>Birthday Party<button type="button">X</button></li>
+        <li>Sunset view <button type="button">X</button></li>
+    </ul>
+</div>
+<button type="button" id = "close"  onclick="Close()">X</button>
+        <ul  id ="recentList">
+            <p>Recently added</p>
+           
+
+        </ul>
+
+
+        
+    </div>
+</div>
+
+
+
+    </div>
+
+    <script>
+
+
+function Off(){
+    document.getElementById("listItem").style.display="none";
+}
+function Close(){
+    document.getElementById("setList").style.display="none";
+}
+
+
+ var list = document.querySelector('ul');
+        list.addEventListener('click', function(ev)
+    {
+        if(ev.target.tagName ==='li'){
+            ev.target.classList.toggle('checked');
+        }
+    },false);
+    const f = document.querySelector('form');
+
+f.addEventListener('add', (ev) => {
+  let but = f.querySelector('input');
+  but.type = (but.type === 'search') ? 'add' : 'search';
+  ev.preventDefault();
+});
+
+document.querySelector('input').addEventListener('click', (ev) => {
+  let field = ev.target;
+  field.contentEditable = field.contentEditable === true ? false: true;
+});
+
+    function newAdd(){
+        var li= document.createElement("li");
+        var inputValue = document.getElementById("input").value;
+        var text = document.createTextNode(inputValue);
+        li.appendChild(text);
+    
+        if (inputValue === ''){
+            alert("You must write something!");
+
+        }
+        else{
+            document.getElementById("list").appendChild(li);
+            document.getElementById("recentList").appendChild(li);
+            document.getElementById("recentList").style.display="block";
+            document.getElementById("close").style.display="block";
+        }
+        $(document).ready(function(){
+  $(" button:nth-of-type(2)").css("display", "block");
+});
+        document.getElementById("input").value ="";
+        document.getElementById("add").input.addEventListener("keypress",function(event)
+    {
+        if (event.keyCode === 13){
+            event.preventDefault();
+            document.getElementById('add').click();
+        }
+    });
+
+    }
+
+    
+    function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("list");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+
+      
+    }
+}
+function Click(){
+            document.getElementById('li').style.display ="none";
+        }
+
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <style>
+        body{
+            background:linear-gradient(45deg,blue,black),linear-gradient(100deg,rgb(155, 153, 23),rgb(32, 0, 15)),linear-gradient(40deg,rgb(125, 11, 231),rgb(255, 149, 149)),radial-gradient(rgb(185, 151, 216) 100%,rgb(255, 177, 177) 100%);
+            height: 100vh;
+            background-blend-mode:soft-light,color;
+            font-size: 1rem;
+        }
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            width:100%;
+            
+        }
+        .container__content{
+            background:linear-gradient(rgb(255, 255, 255),rgba(238, 236, 236, 0.952));
+            width:450px;
+            padding:15px;
+            border-radius: 10px;
+   
+        }
+        h1{
+            color: white;
+        }
+        label{
+            width: 40%;
+        }
+        input{
+            background-color: transparent;
+            border: none;
+            outline: none;
+            padding: 5px;
+            border-bottom: 1px solid rgba(34, 5, 5, 0.3);
+            width: 100%;
+        }
+        .input{
+            display: flex;
+            align-items: center;
+            
+            margin-block: 10px;
+        }
+        
+        input[type="radio"]{
+            padding: 0;
+            justify-content: start;
+        }
+        
+       
+        
+        .input:nth-child(5) label{
+            width: 21%;
+            
+        }
+
+        .input:nth-child(6){
+            flex-direction: column;
+            align-items:start;
+           
+        }
+        .input:nth-child(6) textarea{
+            width:100%;
+            margin-top: 10px;
+
+        }
+        button{
+            width: 100%;
+            background-color: rgb(135, 5, 241);
+            padding:10px;
+            border: none;
+            outline: none;
+            color: white;
+            
+        }
+        span{
+            color:red;
+            padding: 0px;
+            margin:0px;
+            font-size: 0.85rem;
+        }
+
+        i{
+            font-size: 1.5rem;
+         
+           
+        }
+        #contact-name{
+            position: relative;
+        }
+        img{
+            width:35px;
+           
+        }
+
+        #name-valid,#email-valid,#phone-valid{
+            display: none;
+        }
+        #name-invalid,#email-invalid,#phone-invalid{
+            display: none;
+        }
+        .gender{
+            display: flex;
+        }
+        textarea{
+            width: 100%;
+            padding: 10px;
+        }
+       
+*{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.success{
+    background: #ddd;
+    padding: 12px;
+    width: 550px;
+    margin: 0 auto;
+    margin-top:10%;
+    border-radius: 12px;
+   
+}
+#success{
+    display: none;
+}
+.success h1{
+    color: rgb(132, 56, 255);
+   
+}
+    </style>
+<div class="success" id="success">
+    <h1>Feedback Submitted Successfully  !</h1>
+    <h1>Thank for your response</h1>
+</div>
+    <div class="container">
+        <h1>Feedback Form</h1>
+        <div class="container__content">
+            <form>
+                <div class="input">
+                    <label>Full Name </label>
+                    <input type="text" placeholder="Enter your name" id = "contact-name" onkeyup = "validateName()">
+                    <div id = "name-valid">
+                    <img src="./img/correct.png"></div>
+                    <div id ="name-invalid">
+                    <img src="./img/wrong.png"></div>
+                </div>
+                <span id = "name-err"></span>
+
+                <div class="input">
+                    <label>Email Id</label>
+                    <input type="text" placeholder="Keerthi@gmil.com" id = "contact-email" onkeyup = "validateEmail()">
+                    <div id = "email-valid">
+                        <img src="./img/correct.png"></div>
+                        <div id ="email-invalid">
+                        <img src="./img/wrong.png"></div>
+                 
+                </div>
+                <span id = "email-err"></span>
+
+                <div class="input">
+                    <label style="width: 180px;">Phone No.</label>
+                    <input type="text" placeholder="+91 85698 526XX" id = "contact-phone" onkeyup = "validatePhone()">
+                    <div id = "phone-valid">
+                        <img src="./img/correct.png"></div>
+                        <div id ="phone-invalid">
+                        <img src="./img/wrong.png"></div>
+                    
+                </div>
+                <span id = "phone-err"></span>
+               
+               
+
+                <div class="input">
+                    <label>Gender:</label>
+                <div class="gender">
+                   
+                    <input type="radio" name="male" value="male">
+                    <label for="male">Male</label>
+                </div>
+                    <div class="gender">
+            <input type="radio" value="Female" name="male">
+            <label for="male">Female</label>
+        </div>
+        
+        
+
+                </div>
+
+                <div class="input">
+                    <label>Your Feedback</label>
+                    <textarea rows="5" placeholder="Enter your message"></textarea>
+                </div>
+
+<button type = "button" id= "submit"  >SUBMIT</button>
+            </form>
+        </div>
+
+
+    </div>
+    
+
+    <script>
+      
+        function validateName() {
+            var name = document.getElementById("contact-name").value;
+            var nameErr = document.getElementById("name-err");
+            var validIcon = document.getElementById("name-valid");
+            var invalidIcon = document.getElementById("name-invalid");
+
+            if(!name) {
+                nameErr.innerHTML = "Name is required";
+                invalidIcon.style.display = "block";
+                validIcon.style.display = "none";
+                return false;
+            }
+            if(name.length < 3) { 
+                nameErr.innerHTML = "At least three letters";
+                invalidIcon.style.display = "block";
+                validIcon.style.display = "none";
+                return false;
+            }
+            if(!name.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)) {
+                nameErr.innerHTML = 'Write your Full name!<br> Enter a Valid Name';
+                invalidIcon.style.display = "block";
+                validIcon.style.display = "none";
+                return false;
+            }
+
+            validIcon.style.display = "block";
+            invalidIcon.style.display = "none";
+            nameErr.innerHTML = "";
+            return true;
+        }
+
+        function validateEmail() {
+            var email = document.getElementById("contact-email").value;
+            var emailErr = document.getElementById("email-err");
+            var validIcon = document.getElementById("email-valid");
+            var invalidIcon = document.getElementById("email-invalid");
+
+            if(!email) {
+                emailErr.innerHTML = "Email is required";
+                invalidIcon.style.display = "block";
+                validIcon.style.display = "none";
+                return false;
+            }
+            if(!email.match(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+                emailErr.innerHTML = 'Enter a Valid Email';
+                invalidIcon.style.display = "block";
+                validIcon.style.display = "none";
+                return false;
+            }
+
+            validIcon.style.display = "block";
+            invalidIcon.style.display = "none";
+            emailErr.innerHTML = "";
+            return true;
+        }
+
+        function validatePhone() {
+            var phone = document.getElementById('contact-phone').value;
+            var phoneErr = document.getElementById('phone-err');
+            var validIcon = document.getElementById("phone-valid");
+            var invalidIcon = document.getElementById("phone-invalid");
+
+            if(!phone) {
+                phoneErr.innerHTML = 'Phone number is required!';
+                invalidIcon.style.display = "block";
+                validIcon.style.display = "none";
+                return false;
+            }
+            if(phone.length !== 10 || !phone.match (/^[0-9]{10}$/)) {
+                phoneErr.innerHTML = "Enter a valid phone number";
+                invalidIcon.style.display = "block";
+                validIcon.style.display = "none";
+                return false;
+            }
+
+            validIcon.style.display = "block";
+            invalidIcon.style.display = "none";
+            phoneErr.innerHTML = "";
+            return true;
+        }
+
+        function Submit(){
+            const submit = document.getElementById("submit");
+            const successDisplay = document.getElementById("success");
+            var form = document.querySelector(".container");
+
+            submit.addEventListener("click",()=>{
+
+                if(validateEmail() && validatePhone() && validateName()){
+                successDisplay.style.display = "block";
+                form.style.display = "none";
+                console.log(submit);
+                }
+                
+                else{
+                    alert("Please fill the form")
+                }
+            })
+                
+            
+        }
+        Submit()
+
+    </script>
+
+</body>
+</html>
