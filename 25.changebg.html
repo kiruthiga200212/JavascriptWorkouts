@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrolling Color Change</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .section {
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.5s;
+            
+        }
+        #section1 { background-color: rgb(165, 224, 243); }
+        #section2 { background-color: rgb(214, 247, 214); }
+        #section3 { background-color: rgb(255, 196, 196); }
+    </style>
+</head>
+<body>
+    <div id="section1" class="section"><h1>Color Change</h1></div>
+    <div id="section2" class="section"></div>
+    <div id="section3" class="section"></div>
+    <div id="section3" class="section"></div>
+    <div id="section3" class="section"></div>
+    <script>
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {   
+                const rect = section.getBoundingClientRect();
+                if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                    section.style.backgroundColor = 'beige'; 
+                } else {
+                    section.style.backgroundColor = ''; 
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+s

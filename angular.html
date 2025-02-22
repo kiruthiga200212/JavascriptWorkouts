@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<style>
+    input{
+        width:100%;
+        border:none;
+        border-bottom: 1px solid black;
+        outline: none;
+        padding-block: 20px;
+        text-transform: uppercase;
+        margin-block: 15px;
+    }
+    input:focus{
+        background-color: aliceblue;
+    }
+</style>
+<div ng-app="" ng-init = "name = 'Click here and  edit this line'">
+</p>
+<p>Input something in the input box:</p>
+<p>Frame Any Sentence: <input type="text" ng-model="name" ></p>
+<p ng-bind="name"></p>
+
+
+</div>
+
+</body>
+</html>
